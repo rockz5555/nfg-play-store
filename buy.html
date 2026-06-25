@@ -985,6 +985,12 @@
           <p style="text-align:center;color:#8899aa;font-size:12px;margin-top:8px;">
             Please wait while we confirm your payment. This page will update automatically.
           </p>
+          <p style="text-align:center;color:#c46ec0;font-size:11px;margin-top:6px">
+            Order ID: <span id="orderIdDisplay" style="color:#9898da;font-family:monospace">---</span>
+            <button onclick="copyOrderId()"
+              style="background:none;border:none;cursor:pointer;color:#00F0FF;font-size:11px;padding:2px 6px;vertical-align:middle;border-radius:4px;transition:all 0.2s"
+              title="Copy Order ID" id="copyOrderIdBtn">⧉</button>
+          </p>
         </div>
         <div id="successView" class="success-section hidden">
           <div class="success-icon">&#10003;</div>
@@ -998,6 +1004,15 @@
       </div>
 
       <div id="status" class="status"></div>
+
+      <div id="paypalOrderDisplay" class="hidden"
+        style="text-align:center;margin-top:10px;padding:8px 12px;border-radius:8px;background:rgba(0,240,255,0.04);border:1px solid rgba(0,240,255,0.08)">
+        <span style="color:#c46ec0;font-size:11px">Order ID: </span>
+        <span id="paypalOrderId" style="color:#9898da;font-family:monospace;font-size:12px">---</span>
+        <button onclick="copyPaypalOrderId()"
+          style="background:none;border:none;cursor:pointer;color:#00F0FF;font-size:11px;padding:2px 6px;vertical-align:middle;border-radius:4px"
+          title="Copy Order ID" id="copyPaypalOrderIdBtn">⧉</button>
+      </div>
 
       <div class="footer">
         License delivered immediately after payment verification.<br>
@@ -1137,12 +1152,14 @@
         const data = await res.json();
         if (!res.ok) { showStatus('API error: ' + (data.error || res.status), 'error'); return; }
         if (data.order_id) currentOrderId = data.order_id;
+        document.getElementById('paypalOrderId').textContent = currentOrderId;
+        document.getElementById('paypalOrderDisplay').classList.remove('hidden');
       } catch (e) {
         showStatus('Connection error: ' + e.message, 'error');
         return;
       }
       window.open(PAYPAL_ME, '_blank');
-      showStatus('Send $9.99 via PayPal.me. Your license key will be delivered to your email.', 'info');
+      showStatus('Send $9.99 via PayPal.me then contact me on <a href="https://t.me/rockz5555" target="_blank" style="color:#00F0FF;text-decoration:underline">Telegram</a> with your Order ID to get your key.', 'info');
     }
 
     async function handleCrypto() {
@@ -1160,7 +1177,9 @@
         const data = await res.json();
         if (!res.ok) { showStatus('API error: ' + (data.error || res.status), 'error'); return; }
         currentOrderId = data.order_id;
-        window.location.href = data.hosted_url;
+        window.open(data.hosted_url, '_blank');
+        showResultView();
+        pollOrderStatus(currentOrderId);
       } catch (e) {
         showStatus('Error: ' + e.message, 'error');
       }
@@ -1172,6 +1191,8 @@
       document.getElementById('resultSection').classList.remove('hidden');
       document.getElementById('processingView').classList.remove('hidden');
       document.getElementById('successView').classList.add('hidden');
+      document.getElementById('paypalOrderDisplay').classList.add('hidden');
+      document.getElementById('orderIdDisplay').textContent = currentOrderId || '---';
     }
 
     function showSuccess(key) {
@@ -1183,28 +1204,24 @@
 
     async function pollOrderStatus(orderId) {
       let attempts = 0;
-      const maxAttempts = 60;
 
       const poll = async () => {
         attempts++;
         try {
           const res = await fetch(`${API}/api/order-status?order_id=${orderId}`);
           if (!res.ok) {
-            if (attempts < maxAttempts) setTimeout(poll, 2000);
-            else showStatus('Payment confirmed but key retrieval delayed. Contact support.', 'error');
+            setTimeout(poll, 4000);
             return;
           }
           const data = await res.json();
           if (data.status === 'completed') {
             showSuccess(data.license_key);
-          } else if (attempts >= maxAttempts) {
-            showStatus('Still processing. Check your email later or contact support.', 'error');
           } else {
-            setTimeout(poll, 2000);
+            const delay = attempts > 30 ? 5000 : 2000;
+            setTimeout(poll, delay);
           }
         } catch (e) {
-          if (attempts < maxAttempts) setTimeout(poll, 2000);
-          else showStatus('Connection error. If payment succeeded, check email.', 'error');
+          setTimeout(poll, 4000);
         }
       };
       poll();
@@ -1235,7 +1252,7 @@
 
     function showStatus(msg, type) {
       const el = document.getElementById('status');
-      el.textContent = msg;
+      el.innerHTML = msg;
       el.className = 'status ' + (type || '');
     }
 
@@ -1243,6 +1260,7 @@
       document.getElementById('purchaseSection').classList.add('hidden');
       document.getElementById('resultSection').classList.add('hidden');
       document.getElementById('keyForm').classList.remove('hidden');
+      document.getElementById('paypalOrderDisplay').classList.add('hidden');
       showStatus('', '');
     }
 
@@ -1251,6 +1269,7 @@
       document.getElementById('resultSection').classList.add('hidden');
       document.getElementById('purchaseSection').classList.remove('hidden');
       document.getElementById('adminPanel').classList.add('hidden');
+      document.getElementById('paypalOrderDisplay').classList.add('hidden');
       document.querySelector('.container').classList.remove('hidden');
       if (adminTimer) { clearInterval(adminTimer); adminTimer = null; }
       showStatus('', '');
@@ -1259,6 +1278,7 @@
     function resetPage() {
       document.getElementById('resultSection').classList.add('hidden');
       document.getElementById('purchaseSection').classList.remove('hidden');
+      document.getElementById('paypalOrderDisplay').classList.add('hidden');
       document.getElementById('email').value = '';
       showStatus('', '');
       currentOrderId = null;
@@ -1443,6 +1463,40 @@
         clearInterval(adminTimer); adminTimer = null;
         document.getElementById('adminRefreshBtn').textContent = '\u21bb Refresh';
       }
+    }
+
+    function copyOrderId() {
+      const id = currentOrderId || document.getElementById('orderIdDisplay').textContent;
+      if (!id || id === '---') return;
+      navigator.clipboard.writeText(id).then(() => {
+        const btn = document.getElementById('copyOrderIdBtn');
+        btn.textContent = 'OK';
+        setTimeout(() => { btn.textContent = '⧉'; }, 1500);
+      }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = id; document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
+        const btn = document.getElementById('copyOrderIdBtn');
+        btn.textContent = 'OK';
+        setTimeout(() => { btn.textContent = '⧉'; }, 1500);
+      });
+    }
+
+    function copyPaypalOrderId() {
+      const id = document.getElementById('paypalOrderId').textContent;
+      if (!id || id === '---') return;
+      navigator.clipboard.writeText(id).then(() => {
+        const btn = document.getElementById('copyPaypalOrderIdBtn');
+        btn.textContent = 'OK';
+        setTimeout(() => { btn.textContent = '⧉'; }, 1500);
+      }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = id; document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
+        const btn = document.getElementById('copyPaypalOrderIdBtn');
+        btn.textContent = 'OK';
+        setTimeout(() => { btn.textContent = '⧉'; }, 1500);
+      });
     }
   </script>
 </body>
