@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NFG Multi Crack PRO - Purchase</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
@@ -15,244 +21,747 @@
       align-items: center;
       justify-content: center;
     }
-    .container { max-width: 520px; width: 100%; padding: 20px; }
+
+    .container {
+      max-width: max-content;
+      width: 100%;
+      padding: 20px;
+    }
+
     .card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(0,240,255,0.2);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 240, 255, 0.2);
       border-radius: 20px;
       padding: 36px 28px;
       backdrop-filter: blur(20px);
     }
+
     .logo {
-      width: 72px; height: 72px; margin: 0 auto 20px; display: block;
-      border-radius: 50%; border: 2px solid #00F0FF; padding: 14px;
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 20px;
+      display: block;
+      border-radius: 50%;
+      border: 2px solid #00F0FF;
+      padding: 14px;
     }
-    h1 { text-align: center; font-size: 22px; margin-bottom: 4px; }
-    .subtitle { text-align: center; color: #00F0FF; font-size: 13px; margin-bottom: 28px; }
-    .feature { margin-bottom: 18px; }
-    .feature h3 { color: #00F0FF; font-size: 13px; margin-bottom: 2px; }
-    .feature p { color: #8899aa; font-size: 12px; line-height: 1.5; }
-    .price { text-align: center; margin: 28px 0; }
-    .price .amount { font-size: 44px; font-weight: bold; color: #00F0FF; }
-    .price .period { color: #8899aa; font-size: 13px; }
+
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #00F0FF;
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+
+    .feature {
+      margin-bottom: 18px;
+    }
+
+    .feature h3 {
+      color: #00F0FF;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .feature p {
+      color: #8899aa;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .price {
+      text-align: center;
+      margin: 28px 0;
+    }
+
+    .price .amount {
+      font-size: 44px;
+      font-weight: bold;
+      color: #00F0FF;
+    }
+
+    .price .period {
+      color: #8899aa;
+      font-size: 13px;
+    }
 
     .email-input {
-      width: 100%; padding: 13px 16px; border-radius: 10px;
-      border: 1px solid rgba(0,240,255,0.3);
-      background: rgba(0,0,0,0.3); color: #fff; font-size: 14px;
-      margin-bottom: 16px; outline: none;
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-size: 14px;
+      margin-bottom: 16px;
+      outline: none;
     }
-    .email-input:focus { border-color: #00F0FF; }
+
+    .email-input:focus {
+      border-color: #00F0FF;
+    }
 
     .payment-tabs {
-      display: flex; gap: 8px; margin-bottom: 16px;
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
     }
+
     .payment-tab {
-      flex: 1; padding: 10px 8px; text-align: center; cursor: pointer;
-      border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);
-      background: transparent; color: #8899aa; font-size: 12px; font-weight: 600;
+      flex: 1;
+      padding: 10px 8px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: transparent;
+      color: #8899aa;
+      font-size: 12px;
+      font-weight: 600;
       transition: all 0.2s;
     }
-    .payment-tab:hover { border-color: rgba(0,240,255,0.3); color: #ccc; }
-    .payment-tab.active {
-      border-color: #00F0FF; color: #fff; background: rgba(0,240,255,0.08);
+
+    .payment-tab:hover {
+      border-color: rgba(0, 240, 255, 0.3);
+      color: #ccc;
     }
-    .payment-tab .icon { font-size: 18px; display: block; margin-bottom: 4px; }
+
+    .payment-tab.active {
+      border-color: #00F0FF;
+      color: #fff;
+      background: rgba(0, 240, 255, 0.08);
+    }
+
+    .payment-tab .icon {
+      font-size: 18px;
+      display: block;
+      margin-bottom: 4px;
+    }
 
     .btn {
-      display: block; width: 100%; padding: 15px; border: none; border-radius: 10px;
-      font-size: 15px; font-weight: bold; cursor: pointer; transition: all 0.3s;
-      text-align: center; text-decoration: none;
+      display: block;
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      text-decoration: none;
     }
+
     .btn-primary {
-      background: linear-gradient(135deg, #00F0FF, #0070FF); color: #fff; margin-bottom: 10px;
+      background: linear-gradient(135deg, #00F0FF, #0070FF);
+      color: #fff;
+      margin-bottom: 10px;
     }
+
     .btn-primary:hover:not(:disabled) {
-      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,240,255,0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 240, 255, 0.3);
     }
-    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .btn-secondary {
-      background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-    .btn-secondary:hover { background: rgba(255,255,255,0.15); }
-    .btn-coinbase { background: #0052FF; color: #fff; margin-bottom: 10px; }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-coinbase {
+      background: #0052FF;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
     .btn-coinbase:hover:not(:disabled) {
-      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,82,255,0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 82, 255, 0.3);
     }
 
-    .divider { text-align: center; color: #556; font-size: 12px; margin: 12px 0; position: relative; }
-    .divider::before, .divider::after {
-      content: ''; position: absolute; top: 50%; width: 40%; height: 1px; background: rgba(255,255,255,0.08);
+    .divider {
+      text-align: center;
+      color: #556;
+      font-size: 12px;
+      margin: 12px 0;
+      position: relative;
     }
-    .divider::before { left: 0; }
-    .divider::after { right: 0; }
 
-    .status { text-align: center; margin-top: 14px; font-size: 13px; min-height: 20px; }
-    .status.success { color: #00FF66; }
-    .status.error { color: #FF3B30; }
-    .status.info { color: #00F0FF; }
-    .hidden { display: none !important; }
+    .divider::before,
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+    }
 
-    .success-section { text-align: center; padding: 20px 0; }
+    .divider::before {
+      left: 0;
+    }
+
+    .divider::after {
+      right: 0;
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 13px;
+      min-height: 20px;
+    }
+
+    .status.success {
+      color: #00FF66;
+    }
+
+    .status.error {
+      color: #FF3B30;
+    }
+
+    .status.info {
+      color: #00F0FF;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .success-section {
+      text-align: center;
+      padding: 20px 0;
+    }
+
     .success-icon {
-      width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 50%;
-      background: rgba(0,255,102,0.15); border: 2px solid #00FF66;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 28px; color: #00FF66;
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: rgba(0, 255, 102, 0.15);
+      border: 2px solid #00FF66;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #00FF66;
     }
-    .success-section h2 { font-size: 20px; margin-bottom: 8px; color: #00FF66; }
-    .success-section p { color: #8899aa; font-size: 13px; margin-bottom: 6px; }
+
+    .success-section h2 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: #00FF66;
+    }
+
+    .success-section p {
+      color: #8899aa;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
     .license-key-box {
-      background: rgba(0,240,255,0.08); border: 1px solid rgba(0,240,255,0.3);
-      border-radius: 10px; padding: 14px; margin: 16px 0;
-      font-family: 'Courier New', monospace; font-size: 16px; color: #00F0FF;
-      letter-spacing: 2px; user-select: all;
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-radius: 10px;
+      padding: 14px;
+      margin: 16px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      color: #00F0FF;
+      letter-spacing: 2px;
+      user-select: all;
     }
-    .help-text { color: #556; font-size: 12px; margin-top: 4px; }
+
+    .help-text {
+      color: #556;
+      font-size: 12px;
+      margin-top: 4px;
+    }
 
     .spinner-icon {
-      display: inline-block; width: 14px; height: 14px;
-      border: 2px solid rgba(255,255,255,0.2); border-top-color: #fff;
-      border-radius: 50%; animation: spin 0.6s linear infinite; margin-right: 6px; vertical-align: middle;
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin-right: 6px;
+      vertical-align: middle;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
 
-    .footer { text-align: center; margin-top: 20px; color: #556; font-size: 11px; }
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      color: #556;
+      font-size: 11px;
+    }
 
     /* ─── Admin Panel ──────────────────────────────────────────────────── */
-    .admin-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
-    .admin-header h1 { font-size:20px; margin:0; }
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .admin-header h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
     .admin-header .btn-back {
-      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
-      color:#ccc; padding:8px 16px; border-radius:8px; cursor:pointer; font-size:12px; font-weight:600;
-      transition:all 0.2s;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ccc;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.2s;
     }
-    .admin-header .btn-back:hover { background:rgba(255,255,255,0.12); color:#fff; }
 
-    .admin-login { text-align:center; padding:40px 0; }
+    .admin-header .btn-back:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    .admin-login {
+      text-align: center;
+      padding: 40px 0;
+    }
+
     .admin-login .lock-icon {
-      width:56px; height:56px; margin:0 auto 16px; border-radius:50%;
-      background:rgba(0,240,255,0.1); border:2px solid rgba(0,240,255,0.2);
-      display:flex; align-items:center; justify-content:center; font-size:24px;
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: rgba(0, 240, 255, 0.1);
+      border: 2px solid rgba(0, 240, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
     }
-    .admin-login h2 { font-size:18px; margin-bottom:4px; }
-    .admin-login p { color:#8899aa; font-size:13px; margin-bottom:20px; }
 
-    .admin-stats { display:flex; gap:10px; margin-bottom:20px; }
+    .admin-login h2 {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .admin-login p {
+      color: #8899aa;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .admin-stats {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
     .admin-stat {
-      flex:1; padding:14px 16px; border-radius:12px; text-align:center;
-      border:1px solid rgba(255,255,255,0.06);
+      flex: 1;
+      padding: 14px 16px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
-    .admin-stat .num { font-size:28px; font-weight:bold; }
-    .admin-stat .lbl { font-size:11px; color:#8899aa; margin-top:2px; text-transform:uppercase; letter-spacing:1px; }
-    .admin-stat.total { background:rgba(0,240,255,0.06); border-color:rgba(0,240,255,0.15); }
-    .admin-stat.total .num { color:#00F0FF; }
-    .admin-stat.pending-stat { background:rgba(255,191,0,0.06); border-color:rgba(255,191,0,0.15); }
-    .admin-stat.pending-stat .num { color:#FFBF00; }
-    .admin-stat.completed-stat { background:rgba(0,255,102,0.06); border-color:rgba(0,255,102,0.15); }
-    .admin-stat.completed-stat .num { color:#00FF66; }
 
-    .admin-toolbar { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+    .admin-stat .num {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .admin-stat .lbl {
+      font-size: 11px;
+      color: #8899aa;
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .admin-stat.total {
+      background: rgba(0, 240, 255, 0.06);
+      border-color: rgba(0, 240, 255, 0.15);
+    }
+
+    .admin-stat.total .num {
+      color: #00F0FF;
+    }
+
+    .admin-stat.pending-stat {
+      background: rgba(255, 191, 0, 0.06);
+      border-color: rgba(255, 191, 0, 0.15);
+    }
+
+    .admin-stat.pending-stat .num {
+      color: #FFBF00;
+    }
+
+    .admin-stat.completed-stat {
+      background: rgba(0, 255, 102, 0.06);
+      border-color: rgba(0, 255, 102, 0.15);
+    }
+
+    .admin-stat.completed-stat .num {
+      color: #00FF66;
+    }
+
+    .admin-toolbar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
     .admin-toolbar .search-input {
-      flex:1; min-width:160px; padding:10px 14px; border-radius:8px;
-      border:1px solid rgba(255,255,255,0.1); background:rgba(0,0,0,0.2);
-      color:#fff; font-size:13px; outline:none;
+      flex: 1;
+      min-width: 160px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.2);
+      color: #fff;
+      font-size: 13px;
+      outline: none;
     }
-    .admin-toolbar .search-input:focus { border-color:#00F0FF; }
-    .admin-toolbar .search-input::placeholder { color:#556; }
+
+    .admin-toolbar .search-input:focus {
+      border-color: #00F0FF;
+    }
+
+    .admin-toolbar .search-input::placeholder {
+      color: #556;
+    }
+
     .admin-toolbar .btn-sm {
-      padding:10px 18px; border:none; border-radius:8px; cursor:pointer;
-      font-size:12px; font-weight:600; white-space:nowrap; transition:all 0.2s;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: all 0.2s;
     }
-    .admin-toolbar .btn-refresh { background:rgba(0,240,255,0.12); color:#00F0FF; }
-    .admin-toolbar .btn-refresh:hover { background:rgba(0,240,255,0.2); }
-    .admin-toolbar .btn-refresh.loading { opacity:0.5; pointer-events:none; }
+
+    .admin-toolbar .btn-refresh {
+      background: rgba(0, 240, 255, 0.12);
+      color: #00F0FF;
+    }
+
+    .admin-toolbar .btn-refresh:hover {
+      background: rgba(0, 240, 255, 0.2);
+    }
+
+    .admin-toolbar .btn-refresh.loading {
+      opacity: 0.5;
+      pointer-events: none;
+    }
 
     .admin-table-wrap {
-      border:1px solid rgba(255,255,255,0.06); border-radius:12px;
-      overflow:hidden; overflow-x:auto; margin-bottom:12px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      overflow: hidden;
+      overflow-x: auto;
+      margin-bottom: 12px;
     }
-    .admin-table { width:100%; border-collapse:collapse; }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
     .admin-table th {
-      padding:12px 14px; text-align:left; font-size:11px; font-weight:600;
-      color:#556; text-transform:uppercase; letter-spacing:1px;
-      background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.06);
+      padding: 12px 14px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      color: #556;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
+
     .admin-table td {
-      padding:12px 14px; font-size:13px; color:#ccc;
-      border-bottom:1px solid rgba(255,255,255,0.04);
-      vertical-align:middle;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: #ccc;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      vertical-align: middle;
     }
-    .admin-table tr:last-child td { border-bottom:none; }
-    .admin-table tr:hover td { background:rgba(255,255,255,0.02); }
+
+    .admin-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .admin-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
 
     .admin-table .badge {
-      display:inline-flex; align-items:center; gap:5px;
-      padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
     }
+
     .admin-table .badge::before {
-      content:''; width:6px; height:6px; border-radius:50%;
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
     }
-    .admin-table .badge.pending { background:rgba(255,191,0,0.1); color:#FFBF00; }
-    .admin-table .badge.pending::before { background:#FFBF00; }
-    .admin-table .badge.completed { background:rgba(0,255,102,0.1); color:#00FF66; }
-    .admin-table .badge.completed::before { background:#00FF66; }
-    .admin-table .badge.failed { background:rgba(255,59,48,0.1); color:#FF3B30; }
-    .admin-table .badge.failed::before { background:#FF3B30; }
-    .admin-table .badge.intent { background:rgba(0,240,255,0.1); color:#00F0FF; }
-    .admin-table .badge.intent::before { background:#00F0FF; }
+
+    .admin-table .badge.pending {
+      background: rgba(255, 191, 0, 0.1);
+      color: #FFBF00;
+    }
+
+    .admin-table .badge.pending::before {
+      background: #FFBF00;
+    }
+
+    .admin-table .badge.completed {
+      background: rgba(0, 255, 102, 0.1);
+      color: #00FF66;
+    }
+
+    .admin-table .badge.completed::before {
+      background: #00FF66;
+    }
+
+    .admin-table .badge.failed {
+      background: rgba(255, 59, 48, 0.1);
+      color: #FF3B30;
+    }
+
+    .admin-table .badge.failed::before {
+      background: #FF3B30;
+    }
+
+    .admin-table .badge.intent {
+      background: rgba(0, 240, 255, 0.1);
+      color: #00F0FF;
+    }
+
+    .admin-table .badge.intent::before {
+      background: #00F0FF;
+    }
 
     .admin-table .key-cell {
-      font-family:'Courier New',monospace; font-size:11px; color:#00F0FF;
-      letter-spacing:1px; user-select:all;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: #00F0FF;
+      letter-spacing: 1px;
+      user-select: all;
     }
-    .admin-table .email-cell { color:#e0e0e0; }
-    .admin-table .date-cell { color:#8899aa; font-size:12px; white-space:nowrap; }
+
+    .admin-table .email-cell {
+      color: #e0e0e0;
+    }
+
+    .admin-table .date-cell {
+      color: #8899aa;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
     .admin-table .method-tag {
-      display:inline-block; padding:2px 8px; border-radius:4px;
-      font-size:11px; font-weight:600; text-transform:uppercase;
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
     }
-    .admin-table .method-tag.paypal { background:rgba(0,240,255,0.1); color:#00F0FF; }
-    .admin-table .method-tag.coinbase { background:rgba(0,82,255,0.1); color:#0052FF; }
+
+    .admin-table .method-tag.paypal {
+      background: rgba(0, 240, 255, 0.1);
+      color: #00F0FF;
+    }
+
+    .admin-table .method-tag.coinbase {
+      background: rgba(0, 82, 255, 0.1);
+      color: #0052FF;
+    }
 
     .admin-table .action-btn {
-      padding:5px 12px; border:none; border-radius:6px; cursor:pointer;
-      font-size:11px; font-weight:600; transition:all 0.2s; white-space:nowrap;
+      padding: 5px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 600;
+      transition: all 0.2s;
+      white-space: nowrap;
     }
+
     .admin-table .action-btn.complete {
-      background:rgba(0,255,102,0.12); color:#00FF66;
+      background: rgba(0, 255, 102, 0.12);
+      color: #00FF66;
     }
-    .admin-table .action-btn.complete:hover { background:rgba(0,255,102,0.2); }
+
+    .admin-table .action-btn.complete:hover {
+      background: rgba(0, 255, 102, 0.2);
+    }
+
     .admin-table .action-btn.copy {
-      background:rgba(0,240,255,0.08); color:#00F0FF;
+      background: rgba(0, 240, 255, 0.08);
+      color: #00F0FF;
     }
-    .admin-table .action-btn.copy:hover { background:rgba(0,240,255,0.15); }
+
+    .admin-table .action-btn.copy:hover {
+      background: rgba(0, 240, 255, 0.15);
+    }
+
     .admin-table .action-btn.delete {
-      background:rgba(255,59,48,0.08); color:#FF3B30;
+      background: rgba(255, 59, 48, 0.08);
+      color: #FF3B30;
     }
-    .admin-table .action-btn.delete:hover { background:rgba(255,59,48,0.15); }
+
+    .admin-table .action-btn.delete:hover {
+      background: rgba(255, 59, 48, 0.15);
+    }
 
     .admin-empty {
-      text-align:center; padding:40px 20px; color:#556; font-size:14px;
+      text-align: center;
+      padding: 40px 20px;
+      color: #556;
+      font-size: 14px;
     }
-    .admin-empty span { font-size:32px; display:block; margin-bottom:8px; }
+
+    .admin-empty span {
+      font-size: 32px;
+      display: block;
+      margin-bottom: 8px;
+    }
 
     .admin-status-bar {
-      display:flex; justify-content:space-between; align-items:center;
-      padding:10px 0; font-size:12px; color:#8899aa;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      font-size: 12px;
+      color: #8899aa;
     }
-    .admin-status-bar .count { color:#ccc; }
-    .admin-auto-refresh label { cursor:pointer; display:flex; align-items:center; gap:6px; }
-    .admin-auto-refresh input { accent-color:#00F0FF; }
+
+    .admin-status-bar .count {
+      color: #ccc;
+    }
+
+    .admin-auto-refresh label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .admin-auto-refresh input {
+      accent-color: #00F0FF;
+    }
+
     .admin-toast {
-      position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
-      background:rgba(0,240,255,0.9); color:#0a0a1a; padding:10px 20px;
-      border-radius:8px; font-size:13px; font-weight:600; z-index:999;
-      opacity:0; transition:opacity 0.3s; pointer-events:none;
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 240, 255, 0.9);
+      color: #0a0a1a;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
     }
-    .admin-toast.show { opacity:1; }
+
+    .admin-toast.show {
+      opacity: 1;
+    }
+
+    /* ─── Custom Confirm Dialog ─────────────────────────────────────────── */
+    .confirm-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.6);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .confirm-overlay.show { opacity: 1; pointer-events: auto; }
+
+    .confirm-box {
+      background: linear-gradient(135deg, #14142a 0%, #1a0a2e 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 28px 32px 24px;
+      max-width: 380px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      transform: scale(0.92);
+      transition: transform 0.25s;
+    }
+    .confirm-overlay.show .confirm-box { transform: scale(1); }
+
+    .confirm-box .icon {
+      width: 48px; height: 48px; margin: 0 auto 12px;
+      border-radius: 50%;
+      background: rgba(0,255,102,0.1);
+      border: 2px solid rgba(0,255,102,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .confirm-box p { font-size: 14px; color: #ccc; line-height: 1.5; margin-bottom: 20px; }
+    .confirm-actions { display: flex; gap: 10px; justify-content: center; }
+    .confirm-actions button {
+      padding: 10px 24px; border: none; border-radius: 8px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .confirm-actions .btn-cancel {
+      background: rgba(255,255,255,0.06); color: #8899aa;
+    }
+    .confirm-actions .btn-cancel:hover { background: rgba(255,255,255,0.1); }
+    .confirm-actions .btn-confirm {
+      background: rgba(0,255,102,0.15); color: #00FF66;
+    }
+    .confirm-actions .btn-confirm:hover { background: rgba(0,255,102,0.25); }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="card">
@@ -282,7 +791,8 @@
 
       <!-- Main purchase flow -->
       <div id="purchaseSection">
-        <input type="email" id="email" class="email-input" placeholder="Your email address (for license delivery)" autocomplete="email" />
+        <input type="email" id="email" class="email-input" placeholder="Your email address (for license delivery)"
+          autocomplete="email" />
 
         <div class="payment-tabs">
           <div class="payment-tab active" data-method="paypal" onclick="selectMethod('paypal')">
@@ -297,7 +807,8 @@
         <button id="paypalBtn" class="btn btn-primary" onclick="handlePayPal()">PURCHASE WITH PAYPAL</button>
 
         <!-- Coinbase button -->
-        <button id="coinbaseBtn" class="btn btn-coinbase hidden" onclick="handleCoinbase()">PURCHASE WITH COINBASE</button>
+        <button id="coinbaseBtn" class="btn btn-coinbase hidden" onclick="handleCoinbase()">PURCHASE WITH
+          COINBASE</button>
 
         <div class="divider">or</div>
         <button class="btn btn-secondary" onclick="showKeyEntry()">I ALREADY HAVE A KEY</button>
@@ -353,8 +864,10 @@
           <div class="lock-icon">&#128274;</div>
           <h2>Admin Access</h2>
           <p>Enter your ADMIN_KEY to manage orders</p>
-          <input type="password" id="adminKey" class="email-input" placeholder="Admin key" style="max-width:280px;margin:0 auto 14px" />
-          <button class="btn btn-primary" style="max-width:280px;margin:0 auto" onclick="adminLoadOrders()">UNLOCK</button>
+          <input type="password" id="adminKey" class="email-input" placeholder="Admin key"
+            style="max-width:280px;margin:0 auto 14px" />
+          <button class="btn btn-primary" style="max-width:280px;margin:0 auto"
+            onclick="adminLoadOrders()">UNLOCK</button>
           <div id="adminStatus" class="status" style="margin-top:12px"></div>
         </div>
       </div>
@@ -366,7 +879,8 @@
 
         <!-- Toolbar -->
         <div class="admin-toolbar">
-          <input type="text" id="adminSearch" class="search-input" placeholder="Search by email..." oninput="adminRenderTable()" />
+          <input type="text" id="adminSearch" class="search-input" placeholder="Search by email..."
+            oninput="adminRenderTable()" />
           <button class="btn-sm btn-refresh" id="adminRefreshBtn" onclick="adminLoadOrders()">&#x21bb; Refresh</button>
         </div>
 
@@ -377,7 +891,8 @@
         <div class="admin-status-bar">
           <span class="count" id="adminCount"></span>
           <span class="admin-auto-refresh">
-            <label><input type="checkbox" id="adminAutoRefresh" onchange="adminToggleAutoRefresh()" /> Auto-refresh (30s)</label>
+            <label><input type="checkbox" id="adminAutoRefresh" onchange="adminToggleAutoRefresh()" /> Auto-refresh
+              (30s)</label>
           </span>
         </div>
       </div>
@@ -385,6 +900,17 @@
   </div>
 
   <div id="adminToast" class="admin-toast"></div>
+
+  <div id="confirmOverlay" class="confirm-overlay" onclick="if(event.target===this)adminConfirmResolve(false)">
+    <div class="confirm-box">
+      <div class="icon">&#9889;</div>
+      <p id="confirmText">Are you sure?</p>
+      <div class="confirm-actions">
+        <button class="btn-cancel" onclick="adminConfirmResolve(false)">Cancel</button>
+        <button class="btn-confirm" onclick="adminConfirmResolve(true)">Generate</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     const API = 'https://nfg-license-server.nijoo.workers.dev';
@@ -682,8 +1208,26 @@
       document.getElementById('adminTableWrap').innerHTML = html;
     }
 
+    let adminConfirmResolveFn = null;
+
+    function adminConfirm(msg) {
+      return new Promise(resolve => {
+        adminConfirmResolveFn = resolve;
+        document.getElementById('confirmText').textContent = msg;
+        document.getElementById('confirmOverlay').classList.add('show');
+      });
+    }
+
+    function adminConfirmResolve(result) {
+      document.getElementById('confirmOverlay').classList.remove('show');
+      if (adminConfirmResolveFn) {
+        adminConfirmResolveFn(result);
+        adminConfirmResolveFn = null;
+      }
+    }
+
     async function adminComplete(orderId) {
-      if (!confirm('Generate license key for this order?')) return;
+      if (!(await adminConfirm('Generate license key for this order?'))) return;
       try {
         const res = await fetch(`${API}/api/admin/complete`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -729,4 +1273,5 @@
     }
   </script>
 </body>
+
 </html>
