@@ -1205,7 +1205,7 @@
         if (data.success) {
           showStatus('&#10003; License key verified! Open NFG Multi Crack app and enter this key to activate Pro.', 'success');
         } else {
-          showStatus(data.error || 'Invalid license key', 'error');
+          showStatus(data.error || 'Invalid / expired license key', 'error');
         }
       } catch (e) {
         showStatus('Connection error: ' + e.message, 'error');
