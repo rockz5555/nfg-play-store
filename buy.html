@@ -714,51 +714,93 @@
 
     /* ─── Custom Confirm Dialog ─────────────────────────────────────────── */
     .confirm-overlay {
-      position: fixed; inset: 0; z-index: 1000;
-      background: rgba(0,0,0,0.6);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
       transition: opacity 0.25s;
     }
-    .confirm-overlay.show { opacity: 1; pointer-events: auto; }
+
+    .confirm-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
     .confirm-box {
       background: linear-gradient(135deg, #14142a 0%, #1a0a2e 100%);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 16px;
       padding: 28px 32px 24px;
       max-width: 380px;
       width: 90%;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       transform: scale(0.92);
       transition: transform 0.25s;
     }
-    .confirm-overlay.show .confirm-box { transform: scale(1); }
+
+    .confirm-overlay.show .confirm-box {
+      transform: scale(1);
+    }
 
     .confirm-box .icon {
-      width: 48px; height: 48px; margin: 0 auto 12px;
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 12px;
       border-radius: 50%;
-      background: rgba(0,255,102,0.1);
-      border: 2px solid rgba(0,255,102,0.2);
-      display: flex; align-items: center; justify-content: center;
+      background: rgba(0, 255, 102, 0.1);
+      border: 2px solid rgba(0, 255, 102, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 22px;
     }
-    .confirm-box p { font-size: 14px; color: #ccc; line-height: 1.5; margin-bottom: 20px; }
-    .confirm-actions { display: flex; gap: 10px; justify-content: center; }
+
+    .confirm-box p {
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .confirm-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
     .confirm-actions button {
-      padding: 10px 24px; border: none; border-radius: 8px;
-      font-size: 13px; font-weight: 600; cursor: pointer;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
       transition: all 0.2s;
     }
+
     .confirm-actions .btn-cancel {
-      background: rgba(255,255,255,0.06); color: #8899aa;
+      background: rgba(255, 255, 255, 0.06);
+      color: #8899aa;
     }
-    .confirm-actions .btn-cancel:hover { background: rgba(255,255,255,0.1); }
+
+    .confirm-actions .btn-cancel:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
     .confirm-actions .btn-confirm {
-      background: rgba(0,255,102,0.15); color: #00FF66;
+      background: rgba(0, 255, 102, 0.15);
+      color: #00FF66;
     }
-    .confirm-actions .btn-confirm:hover { background: rgba(0,255,102,0.25); }
+
+    .confirm-actions .btn-confirm:hover {
+      background: rgba(0, 255, 102, 0.25);
+    }
   </style>
 </head>
 
