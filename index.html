@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NFG Multi Crack PRO - Purchase</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container { max-width: 480px; width: 100%; padding: 20px; }
+  .card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(0,240,255,0.2);
+    border-radius: 20px;
+    padding: 40px 30px;
+    backdrop-filter: blur(20px);
+  }
+  .logo {
+    width: 80px; height: 80px;
+    margin: 0 auto 24px;
+    display: block;
+    border-radius: 50%;
+    border: 2px solid #00F0FF;
+    padding: 16px;
+  }
+  h1 { text-align: center; font-size: 24px; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: #00F0FF; font-size: 14px; margin-bottom: 32px; }
+  .feature { margin-bottom: 24px; }
+  .feature h3 { color: #00F0FF; font-size: 14px; margin-bottom: 4px; }
+  .feature p { color: #8899aa; font-size: 13px; line-height: 1.5; }
+  .price { text-align: center; margin: 32px 0; }
+  .price .amount { font-size: 48px; font-weight: bold; color: #00F0FF; }
+  .price .period { color: #8899aa; font-size: 14px; }
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    text-decoration: none;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #00F0FF, #0070FF);
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,240,255,0.3); }
+  .btn-secondary {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.15); }
+  .footer { text-align: center; margin-top: 24px; color: #556; font-size: 12px; }
+  .email-input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,240,255,0.3);
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 16px;
+    outline: none;
+  }
+  .email-input:focus { border-color: #00F0FF; }
+  .status { text-align: center; margin-top: 16px; font-size: 13px; min-height: 20px; }
+  .status.success { color: #00FF66; }
+  .status.error { color: #FF3B30; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2">
+      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+    </svg>
+    <h1>NFG Multi Crack</h1>
+    <p class="subtitle">PRO License · Lifetime Access</p>
+
+    <div class="feature">
+      <h3>✦ AI Hook Generator</h3>
+      <p>Generate Xposed hooks using AI. Unlimited generations with advanced obfuscation analysis.</p>
+    </div>
+    <div class="feature">
+      <h3>✦ Device Spoofing</h3>
+      <p>Spoof device identifiers, GPU, SoC, and system properties per-app.</p>
+    </div>
+    <div class="feature">
+      <h3>✦ SO Library Loader</h3>
+      <p>Inject native .so libraries into any app with full per-app management.</p>
+    </div>
+
+    <div class="price">
+      <div class="amount">$9.99</div>
+      <div class="period">one-time · lifetime updates</div>
+    </div>
+
+    <div id="purchaseForm">
+      <input type="email" id="email" class="email-input" placeholder="Your email address (for license delivery)" />
+      <button class="btn btn-primary" onclick="handlePurchase()">PURCHASE PRO</button>
+      <button class="btn btn-secondary" onclick="showKeyEntry()">I ALREADY HAVE A KEY</button>
+    </div>
+
+    <div id="keyForm" class="hidden">
+      <input type="text" id="licenseKey" class="email-input" placeholder="NFG-XXXX-XXXX-XXXX" />
+      <button class="btn btn-primary" onclick="handleKey()">ACTIVATE</button>
+      <button class="btn btn-secondary" onclick="showPurchase()">BACK TO PURCHASE</button>
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <div class="footer">
+      License delivered via email after purchase.<br>
+      One license per device.
+    </div>
+  </div>
+</div>
+
+<script>
+const API = window.location.origin;
+
+function showStatus(msg, type) {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = 'status ' + (type || '');
+}
+
+function showKeyEntry() {
+  document.getElementById('purchaseForm').classList.add('hidden');
+  document.getElementById('keyForm').classList.remove('hidden');
+}
+
+function showPurchase() {
+  document.getElementById('keyForm').classList.add('hidden');
+  document.getElementById('purchaseForm').classList.remove('hidden');
+}
+
+async function handlePurchase() {
+  const email = document.getElementById('email').value.trim();
+  if (!email) { showStatus('Please enter your email', 'error'); return; }
+
+  showStatus('Redirecting to payment...', '');
+  // Integrate Stripe/PayPal here
+  // For now, redirect to a placeholder
+  window.location.href = 'https://buy.stripe.com/your-link';
+}
+
+async function handleKey() {
+  const key = document.getElementById('licenseKey').value.trim().toUpperCase();
+  if (!key) { showStatus('Please enter your license key', 'error'); return; }
+
+  showStatus('Validating...', '');
+
+  // This page can't access device fingerprint directly
+  // The key must be activated from within the app
+  showStatus('Enter this key in the NFG Multi Crack app: Settings > Enter License Key', '');
+}
+</script>
+</body>
+</html>
