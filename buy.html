@@ -1,175 +1,458 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NFG Multi Crack PRO - Purchase</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .container { max-width: 480px; width: 100%; padding: 20px; }
-  .card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(0,240,255,0.2);
-    border-radius: 20px;
-    padding: 40px 30px;
-    backdrop-filter: blur(20px);
-  }
-  .logo {
-    width: 80px; height: 80px;
-    margin: 0 auto 24px;
-    display: block;
-    border-radius: 50%;
-    border: 2px solid #00F0FF;
-    padding: 16px;
-  }
-  h1 { text-align: center; font-size: 24px; margin-bottom: 8px; }
-  .subtitle { text-align: center; color: #00F0FF; font-size: 14px; margin-bottom: 32px; }
-  .feature { margin-bottom: 24px; }
-  .feature h3 { color: #00F0FF; font-size: 14px; margin-bottom: 4px; }
-  .feature p { color: #8899aa; font-size: 13px; line-height: 1.5; }
-  .price { text-align: center; margin: 32px 0; }
-  .price .amount { font-size: 48px; font-weight: bold; color: #00F0FF; }
-  .price .period { color: #8899aa; font-size: 14px; }
-  .btn {
-    display: block;
-    width: 100%;
-    padding: 16px;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-align: center;
-    text-decoration: none;
-  }
-  .btn-primary {
-    background: linear-gradient(135deg, #00F0FF, #0070FF);
-    color: #fff;
-    margin-bottom: 12px;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,240,255,0.3); }
-  .btn-secondary {
-    background: rgba(255,255,255,0.1);
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.2);
-  }
-  .btn-secondary:hover { background: rgba(255,255,255,0.15); }
-  .footer { text-align: center; margin-top: 24px; color: #556; font-size: 12px; }
-  .email-input {
-    width: 100%;
-    padding: 14px 16px;
-    border-radius: 12px;
-    border: 1px solid rgba(0,240,255,0.3);
-    background: rgba(0,0,0,0.3);
-    color: #fff;
-    font-size: 14px;
-    margin-bottom: 16px;
-    outline: none;
-  }
-  .email-input:focus { border-color: #00F0FF; }
-  .status { text-align: center; margin-top: 16px; font-size: 13px; min-height: 20px; }
-  .status.success { color: #00FF66; }
-  .status.error { color: #FF3B30; }
-  .hidden { display: none; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NFG Multi Crack PRO - Purchase</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container { max-width: 520px; width: 100%; padding: 20px; }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(0,240,255,0.2);
+      border-radius: 20px;
+      padding: 36px 28px;
+      backdrop-filter: blur(20px);
+    }
+    .logo {
+      width: 72px; height: 72px; margin: 0 auto 20px; display: block;
+      border-radius: 50%; border: 2px solid #00F0FF; padding: 14px;
+    }
+    h1 { text-align: center; font-size: 22px; margin-bottom: 4px; }
+    .subtitle { text-align: center; color: #00F0FF; font-size: 13px; margin-bottom: 28px; }
+    .feature { margin-bottom: 18px; }
+    .feature h3 { color: #00F0FF; font-size: 13px; margin-bottom: 2px; }
+    .feature p { color: #8899aa; font-size: 12px; line-height: 1.5; }
+    .price { text-align: center; margin: 28px 0; }
+    .price .amount { font-size: 44px; font-weight: bold; color: #00F0FF; }
+    .price .period { color: #8899aa; font-size: 13px; }
+
+    .email-input {
+      width: 100%; padding: 13px 16px; border-radius: 10px;
+      border: 1px solid rgba(0,240,255,0.3);
+      background: rgba(0,0,0,0.3); color: #fff; font-size: 14px;
+      margin-bottom: 16px; outline: none;
+    }
+    .email-input:focus { border-color: #00F0FF; }
+
+    .payment-tabs {
+      display: flex; gap: 8px; margin-bottom: 16px;
+    }
+    .payment-tab {
+      flex: 1; padding: 10px 8px; text-align: center; cursor: pointer;
+      border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);
+      background: transparent; color: #8899aa; font-size: 12px; font-weight: 600;
+      transition: all 0.2s;
+    }
+    .payment-tab:hover { border-color: rgba(0,240,255,0.3); color: #ccc; }
+    .payment-tab.active {
+      border-color: #00F0FF; color: #fff; background: rgba(0,240,255,0.08);
+    }
+    .payment-tab .icon { font-size: 18px; display: block; margin-bottom: 4px; }
+
+    .btn {
+      display: block; width: 100%; padding: 15px; border: none; border-radius: 10px;
+      font-size: 15px; font-weight: bold; cursor: pointer; transition: all 0.3s;
+      text-align: center; text-decoration: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #00F0FF, #0070FF); color: #fff; margin-bottom: 10px;
+    }
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,240,255,0.3);
+    }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.15); }
+    .btn-coinbase { background: #0052FF; color: #fff; margin-bottom: 10px; }
+    .btn-coinbase:hover:not(:disabled) {
+      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,82,255,0.3);
+    }
+
+    .divider { text-align: center; color: #556; font-size: 12px; margin: 12px 0; position: relative; }
+    .divider::before, .divider::after {
+      content: ''; position: absolute; top: 50%; width: 40%; height: 1px; background: rgba(255,255,255,0.08);
+    }
+    .divider::before { left: 0; }
+    .divider::after { right: 0; }
+
+    .status { text-align: center; margin-top: 14px; font-size: 13px; min-height: 20px; }
+    .status.success { color: #00FF66; }
+    .status.error { color: #FF3B30; }
+    .status.info { color: #00F0FF; }
+    .hidden { display: none !important; }
+
+    .success-section { text-align: center; padding: 20px 0; }
+    .success-icon {
+      width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 50%;
+      background: rgba(0,255,102,0.15); border: 2px solid #00FF66;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; color: #00FF66;
+    }
+    .success-section h2 { font-size: 20px; margin-bottom: 8px; color: #00FF66; }
+    .success-section p { color: #8899aa; font-size: 13px; margin-bottom: 6px; }
+    .license-key-box {
+      background: rgba(0,240,255,0.08); border: 1px solid rgba(0,240,255,0.3);
+      border-radius: 10px; padding: 14px; margin: 16px 0;
+      font-family: 'Courier New', monospace; font-size: 16px; color: #00F0FF;
+      letter-spacing: 2px; user-select: all;
+    }
+    .help-text { color: #556; font-size: 12px; margin-top: 4px; }
+
+    .spinner-icon {
+      display: inline-block; width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,0.2); border-top-color: #fff;
+      border-radius: 50%; animation: spin 0.6s linear infinite; margin-right: 6px; vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .footer { text-align: center; margin-top: 20px; color: #556; font-size: 11px; }
+    .admin-table { width:100%; border-collapse:collapse; font-size:12px; }
+    .admin-table th, .admin-table td { padding:8px 10px; text-align:left; border-bottom:1px solid rgba(255,255,255,0.08); }
+    .admin-table th { color:#00F0FF; font-weight:600; }
+    .admin-table td { color:#ccc; }
+    .admin-table .badge {
+      display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600;
+    }
+    .admin-table .badge.pending { background:rgba(255,191,0,0.15); color:#FFBF00; }
+    .admin-table .badge.completed { background:rgba(0,255,102,0.15); color:#00FF66; }
+    .admin-table .badge.failed { background:rgba(255,59,48,0.15); color:#FF3B30; }
+    .admin-table .key-cell { font-family:'Courier New',monospace; font-size:11px; color:#00F0FF; letter-spacing:1px; }
+    .admin-complete-btn {
+      padding:4px 10px; border:none; border-radius:4px; cursor:pointer;
+      background:rgba(0,240,255,0.15); color:#00F0FF; font-size:11px; font-weight:600;
+    }
+    .admin-complete-btn:hover { background:rgba(0,240,255,0.25); }
+  </style>
 </head>
 <body>
-<div class="container">
-  <div class="card">
-    <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2">
-      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-    </svg>
-    <h1>NFG Multi Crack</h1>
-    <p class="subtitle">PRO License · Lifetime Access</p>
+  <div class="container">
+    <div class="card">
+      <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+      </svg>
+      <h1>NFG Multi Crack</h1>
+      <p class="subtitle">PRO License &middot; Lifetime Access</p>
 
-    <div class="feature">
-      <h3>✦ AI Hook Generator</h3>
-      <p>Generate Xposed hooks using AI. Unlimited generations with advanced obfuscation analysis.</p>
-    </div>
-    <div class="feature">
-      <h3>✦ Device Spoofing</h3>
-      <p>Spoof device identifiers, GPU, SoC, and system properties per-app.</p>
-    </div>
-    <div class="feature">
-      <h3>✦ SO Library Loader</h3>
-      <p>Inject native .so libraries into any app with full per-app management.</p>
-    </div>
+      <div class="feature">
+        <h3>&#10022; AI Hook Generator</h3>
+        <p>Generate Xposed hooks using AI. Unlimited generations with advanced obfuscation analysis.</p>
+      </div>
+      <div class="feature">
+        <h3>&#10022; Device Spoofing</h3>
+        <p>Spoof device identifiers, GPU, SoC, and system properties per-app.</p>
+      </div>
+      <div class="feature">
+        <h3>&#10022; SO Library Loader</h3>
+        <p>Inject native .so libraries into any app with full per-app management.</p>
+      </div>
 
-    <div class="price">
-      <div class="amount">$9.99</div>
-      <div class="period">one-time · lifetime updates</div>
-    </div>
+      <div class="price">
+        <div class="amount">$9.99</div>
+        <div class="period">one-time &middot; lifetime updates</div>
+      </div>
 
-    <div id="purchaseForm">
-      <input type="email" id="email" class="email-input" placeholder="Your email address (for license delivery)" />
-      <button class="btn btn-primary" onclick="handlePurchase()">PURCHASE PRO</button>
-      <button class="btn btn-secondary" onclick="showKeyEntry()">I ALREADY HAVE A KEY</button>
-    </div>
+      <!-- Main purchase flow -->
+      <div id="purchaseSection">
+        <input type="email" id="email" class="email-input" placeholder="Your email address (for license delivery)" autocomplete="email" />
 
-    <div id="keyForm" class="hidden">
-      <input type="text" id="licenseKey" class="email-input" placeholder="NFG-XXXX-XXXX-XXXX" />
-      <button class="btn btn-primary" onclick="handleKey()">ACTIVATE</button>
-      <button class="btn btn-secondary" onclick="showPurchase()">BACK TO PURCHASE</button>
-    </div>
+        <div class="payment-tabs">
+          <div class="payment-tab active" data-method="paypal" onclick="selectMethod('paypal')">
+            <span class="icon">P</span> PayPal
+          </div>
+          <div class="payment-tab" data-method="coinbase" onclick="selectMethod('coinbase')">
+            <span class="icon">&#8383;</span> Coinbase
+          </div>
+        </div>
 
-    <div id="status" class="status"></div>
+        <!-- PayPal button -->
+        <button id="paypalBtn" class="btn btn-primary" onclick="handlePayPal()">PURCHASE WITH PAYPAL</button>
 
-    <div class="footer">
-      License delivered via email after purchase.<br>
-      One license per device.
+        <!-- Coinbase button -->
+        <button id="coinbaseBtn" class="btn btn-coinbase hidden" onclick="handleCoinbase()">PURCHASE WITH COINBASE</button>
+
+        <div class="divider">or</div>
+        <button class="btn btn-secondary" onclick="showKeyEntry()">I ALREADY HAVE A KEY</button>
+      </div>
+
+      <!-- License key entry -->
+      <div id="keyForm" class="hidden">
+        <input type="text" id="licenseKey" class="email-input" placeholder="NFG-XXXX-XXXX-XXXX" autocomplete="off" />
+        <button class="btn btn-primary" onclick="handleKey()">ACTIVATE</button>
+        <button class="btn btn-secondary" onclick="showPurchase()">BACK TO PURCHASE</button>
+      </div>
+
+      <!-- Payment processing / success -->
+      <div id="resultSection" class="hidden">
+        <div id="processingView">
+          <div class="status info">
+            <span class="spinner-icon"></span> Processing your payment...
+          </div>
+          <p style="text-align:center;color:#8899aa;font-size:12px;margin-top:8px;">
+            Please wait while we confirm your payment. This page will update automatically.
+          </p>
+        </div>
+        <div id="successView" class="success-section hidden">
+          <div class="success-icon">&#10003;</div>
+          <h2>Payment Successful!</h2>
+          <p>Your PRO License Key:</p>
+          <div id="licenseKeyDisplay" class="license-key-box">---</div>
+          <p class="help-text">Enter this key in the NFG Multi Crack app to activate Pro features.</p>
+          <button class="btn btn-secondary" style="margin-top:16px" onclick="resetPage()">DONE</button>
+        </div>
+      </div>
+
+      <div id="status" class="status"></div>
+
+      <div class="footer">
+        License delivered immediately after payment verification.<br>
+        One license per device.
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-const API = window.location.origin;
+  <!-- Admin panel (hidden, ?admin=1 to show) -->
+  <div id="adminPanel" class="container hidden">
+    <div class="card">
+      <h1 style="margin-bottom:16px">Admin &mdash; Orders</h1>
+      <input type="password" id="adminKey" class="email-input" placeholder="Admin key" />
+      <button class="btn btn-primary" onclick="adminLoadOrders()">LOAD ORDERS</button>
+      <div id="adminStatus" class="status"></div>
+      <div id="adminTableWrap" style="overflow-x:auto;margin-top:16px"></div>
+      <button class="btn btn-secondary" style="margin-top:12px" onclick="showPurchase()">BACK TO PURCHASE</button>
+    </div>
+  </div>
 
-function showStatus(msg, type) {
-  const el = document.getElementById('status');
-  el.textContent = msg;
-  el.className = 'status ' + (type || '');
-}
+  <script>
+    const API = window.location.origin;
+    const PAYPAL_ME = 'https://www.paypal.me/nizwer/9.99';
+    let selectedMethod = 'paypal';
+    let currentOrderId = null;
 
-function showKeyEntry() {
-  document.getElementById('purchaseForm').classList.add('hidden');
-  document.getElementById('keyForm').classList.remove('hidden');
-}
+    function validateEmail(email) {
+      if (email.length > 254) return false;
+      if (email.length < 5) return false;
+      const at = email.indexOf('@');
+      if (at < 1 || at !== email.lastIndexOf('@')) return false;
+      const local = email.slice(0, at);
+      const domain = email.slice(at + 1);
+      if (local.length > 64) return false;
+      if (domain.length < 4) return false;
+      if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+$/.test(local)) return false;
+      if (local.startsWith('.') || local.endsWith('.')) return false;
+      if (/\.{2,}/.test(local)) return false;
+      if (!/^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?)*$/.test(domain)) return false;
+      const tld = domain.split('.').pop();
+      if (tld.length < 2) return false;
+      return true;
+    }
 
-function showPurchase() {
-  document.getElementById('keyForm').classList.add('hidden');
-  document.getElementById('purchaseForm').classList.remove('hidden');
-}
+    (function init() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('admin') === '1') {
+        document.querySelector('.container').classList.add('hidden');
+        document.getElementById('adminPanel').classList.remove('hidden');
+        return;
+      }
+      const orderId = params.get('order_id');
+      if (orderId) {
+        currentOrderId = orderId;
+        showResultView();
+        pollOrderStatus(orderId);
+      }
+      if (params.get('cancelled')) {
+        showStatus('Payment was cancelled. You can try again.', 'error');
+      }
+    })();
 
-async function handlePurchase() {
-  const email = document.getElementById('email').value.trim();
-  if (!email) { showStatus('Please enter your email', 'error'); return; }
+    function selectMethod(method) {
+      selectedMethod = method;
+      document.querySelectorAll('.payment-tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.method === method);
+      });
+      document.getElementById('paypalBtn').classList.toggle('hidden', method !== 'paypal');
+      document.getElementById('coinbaseBtn').classList.toggle('hidden', method !== 'coinbase');
+      showStatus('', '');
+    }
 
-  showStatus('Redirecting to payment...', '');
-  // Integrate Stripe/PayPal here
-  // For now, redirect to a placeholder
-  window.location.href = 'https://buy.stripe.com/your-link';
-}
+    async function handlePayPal() {
+      const email = document.getElementById('email').value.trim();
+      if (!email) { showStatus('Please enter your email address', 'error'); return; }
+      if (!validateEmail(email)) { showStatus('Please enter a valid email address', 'error'); return; }
+      showStatus('Recording your request...', 'info');
+      try {
+        const res = await fetch(`${API}/api/create-checkout`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, method: 'paypal' }),
+        });
+        const data = await res.json();
+        if (data.order_id) currentOrderId = data.order_id;
+      } catch (_) {}
+      window.open(PAYPAL_ME, '_blank');
+      showStatus('Send $9.99 via PayPal.me. Your license key will be delivered to your email.', 'info');
+    }
 
-async function handleKey() {
-  const key = document.getElementById('licenseKey').value.trim().toUpperCase();
-  if (!key) { showStatus('Please enter your license key', 'error'); return; }
+    async function handleCoinbase() {
+      const email = document.getElementById('email').value.trim();
+      if (!email) { showStatus('Please enter your email address', 'error'); return; }
+      if (!validateEmail(email)) { showStatus('Please enter a valid email address', 'error'); return; }
+      showStatus('Creating Coinbase charge...', 'info');
 
-  showStatus('Validating...', '');
+      try {
+        const res = await fetch(`${API}/api/create-checkout`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, method: 'coinbase' }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Checkout creation failed');
+        currentOrderId = data.order_id;
+        window.location.href = data.hosted_url;
+      } catch (e) {
+        showStatus('Error: ' + e.message, 'error');
+      }
+    }
 
-  // This page can't access device fingerprint directly
-  // The key must be activated from within the app
-  showStatus('Enter this key in the NFG Multi Crack app: Settings > Enter License Key', '');
-}
-</script>
+    function showResultView() {
+      document.getElementById('purchaseSection').classList.add('hidden');
+      document.getElementById('keyForm').classList.add('hidden');
+      document.getElementById('resultSection').classList.remove('hidden');
+      document.getElementById('processingView').classList.remove('hidden');
+      document.getElementById('successView').classList.add('hidden');
+    }
+
+    function showSuccess(key) {
+      document.getElementById('processingView').classList.add('hidden');
+      document.getElementById('successView').classList.remove('hidden');
+      document.getElementById('licenseKeyDisplay').textContent = key;
+      showStatus('', '');
+    }
+
+    async function pollOrderStatus(orderId) {
+      let attempts = 0;
+      const maxAttempts = 60;
+
+      const poll = async () => {
+        attempts++;
+        try {
+          const res = await fetch(`${API}/api/order-status?order_id=${orderId}`);
+          if (!res.ok) {
+            if (attempts < maxAttempts) setTimeout(poll, 2000);
+            else showStatus('Payment confirmed but key retrieval delayed. Contact support.', 'error');
+            return;
+          }
+          const data = await res.json();
+          if (data.status === 'completed') {
+            showSuccess(data.license_key);
+          } else if (attempts >= maxAttempts) {
+            showStatus('Still processing. Check your email later or contact support.', 'error');
+          } else {
+            setTimeout(poll, 2000);
+          }
+        } catch (e) {
+          if (attempts < maxAttempts) setTimeout(poll, 2000);
+          else showStatus('Connection error. If payment succeeded, check email.', 'error');
+        }
+      };
+      poll();
+    }
+
+    function handleKey() {
+      const key = document.getElementById('licenseKey').value.trim().toUpperCase();
+      if (!key) { showStatus('Please enter your license key', 'error'); return; }
+      showStatus('Enter this key in the NFG Multi Crack app: Settings &gt; Enter License Key', 'info');
+    }
+
+    function showStatus(msg, type) {
+      const el = document.getElementById('status');
+      el.textContent = msg;
+      el.className = 'status ' + (type || '');
+    }
+
+    function showKeyEntry() {
+      document.getElementById('purchaseSection').classList.add('hidden');
+      document.getElementById('resultSection').classList.add('hidden');
+      document.getElementById('keyForm').classList.remove('hidden');
+      showStatus('', '');
+    }
+
+    function showPurchase() {
+      document.getElementById('keyForm').classList.add('hidden');
+      document.getElementById('resultSection').classList.add('hidden');
+      document.getElementById('purchaseSection').classList.remove('hidden');
+      showStatus('', '');
+    }
+
+    function resetPage() {
+      document.getElementById('resultSection').classList.add('hidden');
+      document.getElementById('purchaseSection').classList.remove('hidden');
+      document.getElementById('email').value = '';
+      showStatus('', '');
+      currentOrderId = null;
+    }
+
+    // ─── Admin ────────────────────────────────────────────────────────────
+    async function adminLoadOrders() {
+      const key = document.getElementById('adminKey').value.trim();
+      if (!key) { document.getElementById('adminStatus').textContent = 'Enter admin key'; return; }
+      document.getElementById('adminStatus').textContent = 'Loading...';
+      try {
+        const res = await fetch(`${API}/api/admin/orders?admin_key=${encodeURIComponent(key)}`);
+        const data = await res.json();
+        if (!res.ok || !data.orders) {
+          document.getElementById('adminStatus').textContent = data.error || 'Failed to load';
+          return;
+        }
+        document.getElementById('adminStatus').textContent = `${data.orders.length} order(s)`;
+
+        let html = `<table class="admin-table">
+          <tr><th>Date</th><th>Email</th><th>Method</th><th>Status</th><th>License Key</th><th></th></tr>`;
+        for (const o of data.orders) {
+          const date = o.created_at ? new Date(o.created_at).toLocaleString() : '-';
+          const statusBadge = `<span class="badge ${o.status}">${o.status}</span>`;
+          const keyCell = o.license_key ? `<span class="key-cell">${o.license_key}</span>` : '-';
+          const completeBtn = o.status === 'pending'
+            ? `<button class="admin-complete-btn" onclick="adminComplete('${o.order_id}','${key}')">COMPLETE</button>`
+            : '';
+          html += `<tr><td>${date}</td><td>${o.email || '-'}</td><td>${o.method || '-'}</td>
+            <td>${statusBadge}</td><td>${keyCell}</td><td>${completeBtn}</td></tr>`;
+        }
+        html += '</table>';
+        document.getElementById('adminTableWrap').innerHTML = html;
+      } catch (e) {
+        document.getElementById('adminStatus').textContent = 'Error: ' + e.message;
+      }
+    }
+
+    async function adminComplete(orderId, adminKey) {
+      if (!confirm(`Mark order ${orderId} as completed and generate license key?`)) return;
+      try {
+        const res = await fetch(`${API}/api/admin/complete`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ admin_key: adminKey, order_id: orderId, method: 'paypal' }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          adminLoadOrders();
+        } else {
+          alert(data.error || 'Failed');
+        }
+      } catch (e) {
+        alert('Error: ' + e.message);
+      }
+    }
+  </script>
 </body>
 </html>
