@@ -51,15 +51,101 @@
 
     h1 {
       text-align: center;
-      font-size: 22px;
-      margin-bottom: 4px;
+      font-size: 28px;
+      margin-bottom: 10px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #fff, #00F0FF, #7a2eff, #00F0FF, #fff);
+      background-size: 400% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: h1Shimmer 6s ease infinite;
+    }
+
+    @keyframes h1Shimmer {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .hero-tagline {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .hero-tagline .big {
+      display: block;
+      font-size: 15px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      color: #00FF66;
+      text-shadow: 0 0 20px rgba(0, 255, 102, 0.6), 0 0 60px rgba(0, 255, 102, 0.2);
+      animation: tagPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes tagPulse {
+
+      0%,
+      100% {
+        opacity: 0.8;
+        text-shadow: 0 0 20px rgba(0, 255, 102, 0.4), 0 0 60px rgba(0, 255, 102, 0.1);
+      }
+
+      50% {
+        opacity: 1;
+        text-shadow: 0 0 30px rgba(0, 255, 102, 0.8), 0 0 80px rgba(0, 255, 102, 0.3);
+      }
+    }
+
+    .hero-tagline .small {
+      display: block;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .hero-divider {
+      width: 120px;
+      height: 3px;
+      margin: 0 auto 24px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, transparent, #00F0FF, #00FF66, #00F0FF, transparent);
+      background-size: 200% 100%;
+      animation: divSweep 3s ease-in-out infinite;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+    }
+
+    @keyframes divSweep {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
     }
 
     .subtitle {
       text-align: center;
-      color: #00F0FF;
-      font-size: 13px;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 12px;
       margin-bottom: 28px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     .feature {
@@ -164,7 +250,7 @@
     .btn-primary {
       background: linear-gradient(135deg, #00F0FF, #0070FF);
       color: #fff;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
     .btn-primary:hover:not(:disabled) {
@@ -202,7 +288,7 @@
     .divider {
       text-align: center;
       color: #556;
-      font-size: 12px;
+      font-size: 5px;
       margin: 12px 0;
       position: relative;
     }
@@ -319,7 +405,7 @@
     .footer {
       text-align: center;
       margin-top: 20px;
-      color: #556;
+      color: rgba(255, 255, 255, 0.45);
       font-size: 11px;
     }
 
@@ -814,7 +900,11 @@
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
       </svg>
       <h1>NFG Multi Crack</h1>
-      <p class="subtitle">PRO License &middot; Lifetime Access</p>
+      <div class="hero-tagline">
+        <span class="big">&#9889; Unlock the Pro Arsenal &#9889;</span>
+        <span class="small">One purchase &middot; Lifetime access &middot; Everything unlocked</span>
+      </div>
+      <div class="hero-divider"></div>
 
       <div class="feature">
         <h3>&#10022; AI Hook Generator</h3>
@@ -1099,10 +1189,27 @@
       poll();
     }
 
-    function handleKey() {
+    async function handleKey() {
       const key = document.getElementById('licenseKey').value.trim().toUpperCase();
       if (!key) { showStatus('Please enter your license key', 'error'); return; }
-      showStatus('Enter this key in the NFG Multi Crack app: Settings &gt; Enter License Key', 'info');
+      if (!/^NFG-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(key)) {
+        showStatus('Invalid format. Use NFG-XXXX-XXXX-XXXX', 'error'); return;
+      }
+      showStatus('Verifying license key...', 'info');
+      try {
+        const res = await fetch(`${API}/api/check-key`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ license_key: key }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          showStatus('&#10003; License key verified! Open NFG Multi Crack app and enter this key to activate Pro.', 'success');
+        } else {
+          showStatus(data.error || 'Invalid license key', 'error');
+        }
+      } catch (e) {
+        showStatus('Connection error: ' + e.message, 'error');
+      }
     }
 
     function showStatus(msg, type) {
