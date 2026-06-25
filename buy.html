@@ -235,7 +235,7 @@
   </div>
 
   <script>
-    const API = window.location.origin;
+    const API = 'https://nfg-license-server.nijoo.workers.dev';
     const PAYPAL_ME = 'https://www.paypal.me/nizwer/9.99';
     let selectedMethod = 'paypal';
     let currentOrderId = null;
@@ -298,8 +298,12 @@
           body: JSON.stringify({ email, method: 'paypal' }),
         });
         const data = await res.json();
+        if (!res.ok) { showStatus('API error: ' + (data.error || res.status), 'error'); return; }
         if (data.order_id) currentOrderId = data.order_id;
-      } catch (_) {}
+      } catch (e) {
+        showStatus('Connection error: ' + e.message, 'error');
+        return;
+      }
       window.open(PAYPAL_ME, '_blank');
       showStatus('Send $9.99 via PayPal.me. Your license key will be delivered to your email.', 'info');
     }
@@ -317,7 +321,7 @@
           body: JSON.stringify({ email, method: 'coinbase' }),
         });
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Checkout creation failed');
+        if (!res.ok) { showStatus('API error: ' + (data.error || res.status), 'error'); return; }
         currentOrderId = data.order_id;
         window.location.href = data.hosted_url;
       } catch (e) {
