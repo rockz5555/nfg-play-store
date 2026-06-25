@@ -294,15 +294,15 @@
       background: rgba(255,255,255,0.03);
     }
 
-    .btn-coinbase {
-      background: #0052FF;
+    .btn-crypto {
+      background: linear-gradient(135deg, #7a2eff, #0052FF);
       color: #fff;
       margin-bottom: 10px;
     }
 
-    .btn-coinbase:hover:not(:disabled) {
+    .btn-crypto:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 82, 255, 0.3);
+      box-shadow: 0 8px 24px rgba(122, 46, 255, 0.3);
     }
 
     .divider {
@@ -720,9 +720,9 @@
       color: #00F0FF;
     }
 
-    .admin-table .method-tag.coinbase {
-      background: rgba(0, 82, 255, 0.1);
-      color: #0052FF;
+    .admin-table .method-tag.nowpayments {
+      background: rgba(122, 46, 255, 0.1);
+      color: #a855f7;
     }
 
     .admin-table .action-btn {
@@ -953,17 +953,16 @@
           <div class="payment-tab active" data-method="paypal" onclick="selectMethod('paypal')">
             <span class="icon">P</span> PayPal
           </div>
-          <div class="payment-tab" data-method="coinbase" onclick="selectMethod('coinbase')">
-            <span class="icon">&#8383;</span> Coinbase
+          <div class="payment-tab" data-method="nowpayments" onclick="selectMethod('nowpayments')">
+            <span class="icon">&#8383;</span> Crypto
           </div>
         </div>
 
         <!-- PayPal button -->
         <button id="paypalBtn" class="btn btn-primary" onclick="handlePayPal()">PURCHASE WITH PAYPAL</button>
 
-        <!-- Coinbase button -->
-        <button id="coinbaseBtn" class="btn btn-coinbase hidden" onclick="handleCoinbase()">PURCHASE WITH
-          COINBASE</button>
+        <!-- Crypto button -->
+        <button id="cryptoBtn" class="btn btn-crypto hidden" onclick="handleCrypto()">PAY WITH CRYPTO</button>
 
         <div class="divider">or</div>
         <button class="btn btn-secondary" onclick="showKeyEntry()">I ALREADY HAVE A KEY</button>
@@ -1119,7 +1118,7 @@
         t.classList.toggle('active', t.dataset.method === method);
       });
       document.getElementById('paypalBtn').classList.toggle('hidden', method !== 'paypal');
-      document.getElementById('coinbaseBtn').classList.toggle('hidden', method !== 'coinbase');
+      document.getElementById('cryptoBtn').classList.toggle('hidden', method !== 'nowpayments');
       showStatus('', '');
     }
 
@@ -1145,17 +1144,17 @@
       showStatus('Send $9.99 via PayPal.me. Your license key will be delivered to your email.', 'info');
     }
 
-    async function handleCoinbase() {
+    async function handleCrypto() {
       const email = document.getElementById('email').value.trim();
       if (!email) { showStatus('Please enter your email address', 'error'); return; }
       if (!validateEmail(email)) { showStatus('Please enter a valid email address', 'error'); return; }
-      showStatus('Creating Coinbase charge...', 'info');
+      showStatus('Creating crypto payment...', 'info');
 
       try {
         const res = await fetch(`${API}/api/create-checkout`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, method: 'coinbase' }),
+          body: JSON.stringify({ email, method: 'nowpayments' }),
         });
         const data = await res.json();
         if (!res.ok) { showStatus('API error: ' + (data.error || res.status), 'error'); return; }
